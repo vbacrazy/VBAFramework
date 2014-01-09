@@ -1,4 +1,54 @@
-VBAFramework
-============
+#VBAFramework
 
-VBAFramework is a bunch of the .NET Framework Clone Classes and more 
+VBAFramework is a bunch of the .NET Framework Clone Classes and more for .NET programmers.  
+VBAFrameworkは、  
+VBAっぽい書き方なんてわざわざ覚えたくないという.NETプログラマ(作者)のための  
+.NET Frameworkクローンライクなクラス群です。
+
+## Features
+* 出来る限り.NET Frameworkと同じ書き方ができるようにしてます
+* 参照設定を一切不要にしています
+* 依存関係を一切持たず、各クラスファイル単体で動作します
+
+## What is good?
+* クラスファイルなので、VBEでメソッドを入力する際、入力補完が効きます
+* 必要なクラスファイルだけインポートすれば即使えます。らくちんです(自分評)。
+
+## Contents
+### .NET Frameworkクローンライクなクラス群
+- VBA_Clipboard.cls
+- VBA_Directory.cls
+- VBA_File.cls
+- VBA_Path.cls
+- VBA_Stopwatch.cls
+- VBA_StringBuilder.cls
+
+### オレオレクラス
+- VBA_ConfigFile.cls (簡易Configファイル作成クラス)
+- VBA_VAMIE.cls (IEの自動制御用クラス)
+
+### サンプルコード
+- Sample.bas
+- VBA_Static.bas
+
+## Usage
+Please see the [Sample.bas](https://github.com/dck-jp/VBAFramework/blob/master/Sample.bas).  
+使い方は、[Sample.bas](https://github.com/dck-jp/VBAFramework/blob/master/Sample.bas)を見てください。
+
+.NET Frameworkが使えるのであれば、だいたいフィーリングで分かると思います。  
+.NET Frameworkを知らない場合は、がんばってF#から勉強すると良いですよ。
+
+### Tips
+.NET Frameworkで Staticなクラスに対応するVBAFrameworkのクラスに関しては、  
+適当なモジュール(例えば、[VBA_Statics.bas](https://github.com/dck-jp/VBAFramework/blob/master/VBA_Static.bas))内で  
+Publicな変数を作成して宣言と初期化を同時にやってしまいましょう。
+
+当該変数を介して、いつでも・どこからでも参照できるようになり、  
+あたかもStaticクラスのように扱えるようになるので個人的にはオススメです。
+
+
+## License
+This source code is under [MIT License](https://github.com/dck-jp/VBAFramework/blob/master/LICENSE)  
+ソースコードは[MIT License](https://github.com/dck-jp/VBAFramework/blob/master/LICENSE)で配布しています。
+
+てきとうによろしくどうぞー。
