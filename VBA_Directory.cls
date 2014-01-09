@@ -11,17 +11,13 @@ Option Explicit
 ' .NET Framework System.IO.DirectoryÇÃÉNÉçÅ[Éì
 '
 ' Author: D*isuke YAMAKAWA
-' last modified : 2014/1/7
+' last modified : 2014/1/9
 
 Public Sub CreateDirectory(path As String)
     Call MkDir(path)
 End Sub
 
-Public Sub Delete_(path As String)
-    Call Delete(path, False)
-End Sub
-
-Public Sub Delete(path As String, recursive As Boolean)
+Public Sub Delete(path As String, Optional recursive As Boolean = False)
     Dim fso As Object: Set fso = CreateObject("Scripting.FileSystemObject")
     Call fso.DeleteFolder(path, recursive)
 End Sub
@@ -44,11 +40,7 @@ Public Function GetDirectories(path As String)
     Err.Raise 513, "", "NotImplementedError"
 End Function
 
-Public Function GetFiles_(path As String)
-    Err.Raise 513, "", "NotImplementedError"
-End Function
-
-Public Function GetFiles(path As String, searchPattern As String)
+Public Function GetFiles(path As String, Optional searchPattern As String = "*")
     Err.Raise 513, "", "NotImplementedError"
 End Function
 

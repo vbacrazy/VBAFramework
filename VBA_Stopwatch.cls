@@ -15,13 +15,15 @@ Option Explicit
 
 #If VBA7 Then
     Private Declare PtrSafe Function GetTickCount Lib "kernel32" () As LongPtr
+    Private StartTime As LongPtr
+    Private EndTime As LongPtr
+    Private AccumulatedTime As LongPtr
 #Else
     Private Declare Function GetTickCount Lib "kernel32" () As Long
+    Private StartTime As Long
+    Private EndTime As Long
+    Private AccumulatedTime As Long
 #End If
-
-Private StartTime As Date
-Private EndTime As Date
-Private AccumulatedTime As Date
 
 Private Sub Class_Initialize()
 End Sub

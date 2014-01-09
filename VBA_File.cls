@@ -57,10 +57,10 @@ End Sub
 '----------------------------------------------------------------
 ' ファイルを読み込む　（内容を文字列にして返す）
 '----------------------------------------------------------------
-Public Function ReadAllText(filename As String)
+Public Function ReadAllText(fileName As String)
     Dim fso As Object, buf As String
     Set fso = CreateObject("Scripting.FileSystemObject")
-    With fso.GetFile(filename).OpenAsTextStream
+    With fso.GetFile(fileName).OpenAsTextStream
         buf = .ReadAll
         .Close
     End With
@@ -69,10 +69,8 @@ Public Function ReadAllText(filename As String)
     ReadAllText = buf
 End Function
 
-'----------------------------------------------------------------
-' ファイルを読み込む (内容を行単位の文字列を格納した配列にして返す)
-'----------------------------------------------------------------
-Public Function ReadAllLines(filename As String)
+' 末尾に変な空白文字が入る
+Public Function ReadAllLines(fileName As String)
     Dim fso As Object, buf As String
     Dim data() As String
     ReDim data(0)
@@ -80,7 +78,7 @@ Public Function ReadAllLines(filename As String)
     i = 0
     
     Set fso = CreateObject("Scripting.FileSystemObject")
-    With fso.GetFile(filename).OpenAsTextStream
+    With fso.GetFile(fileName).OpenAsTextStream
         Do Until .AtEndOfStream
             data(i) = .ReadLine
             i = i + 1

@@ -14,7 +14,7 @@ Option Explicit
 ' last modified : 2014/1/7
 Private DOClipboard
 Private Sub Class_Initialize()
-    Set DOClipboard = New DataObject
+    Set DOClipboard = CreateObject("new:{1C3B4210-F441-11CE-B9EA-00AA006B1A69}")
 End Sub
 
 Function GetText()
