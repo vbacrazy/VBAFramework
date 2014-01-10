@@ -17,7 +17,7 @@ Public Enum RegexOptions
     MultiLine = &H80000001
 End Enum
 
-Private re_ As Object
+Private re As Object
 
 Public Sub Init(pattern As String, Optional options As String)
     Set re = CreateObject("VBScript.RegExp")
@@ -27,21 +27,22 @@ Public Sub Init(pattern As String, Optional options As String)
 End Sub
 
 Public Function IsMatch(input_ As String, Optional startAt As Integer = 1)
-    IsMatch = re.Test(Mid(input_, startAt))
+    IsMatch = re.test(Mid(input_, startAt))
 End Function
 
 
 Public Function Match(input_ As String, Optional startAt As Integer = 1)
     re.Global = False
-    Match = re.Execute(Mid(input_, startAt))
+    Set Match = re.Execute(Mid(input_, startAt))(0)
 End Function
 
 Public Function Matches(input_ As String, Optional startAt As Integer = 1)
     re.Global = True
-    Matches = re.Execute(Mid(input_, startAt))
+    Set Matches = re.Execute(Mid(input_, startAt))
 End Function
 
 Public Function Replace(input_ As String, replacement As String)
     Replace = re.Replace(input_, replacement)
 End Function
+
 
