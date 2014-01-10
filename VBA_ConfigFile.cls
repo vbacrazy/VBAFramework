@@ -11,28 +11,27 @@ Option Explicit
 ' ä»à’ConfigFileì«Ç›èëÇ´ÉNÉâÉX
 '
 ' Author: D*isuke YAMAKAWA
-' last modified : 2014/1/8
+' last modified : 2014/1/10
 
-Private ConfigFileName_ As String
-Property Let ConfigFileName(Name As String)
-    ConfigFileName_ = Name
+Private FileName_ As String
+Property Get FileName() As String
+    FileName = FileName_
 End Property
-Property Get ConfigFileName() As String
-    ConfigFileName = ConfigFileName_
-End Property
-
-Property Get ConfigFilePath() As String
+Property Get FilePath() As String
     Dim Wsh: Set Wsh = CreateObject("WScript.Shell")
     Dim path As String: path = Wsh.SpecialFolders("MyDocuments") & "\MyMacroConfig"
     
     If Dir(path, vbDirectory) = "" Then MkDir (path)
     
-    ConfigFilePath = path & "\" & ConfigFileName
+    FilePath = path & "\" & FileName
 End Property
 
+Public Sub Init(fileNameOnly As String)
+    FileName_ = fileNameOnly
+End Sub
 
 ' Shift-JISÇ≈èëÇ´çûÇ›
-Public Sub WriteConfigFile(data() As String)
+Public Sub Save(data() As String)
     Dim fso: Set fso = CreateObject("Scripting.FileSystemObject")
     Dim stream: Set stream = fso.OpenTextFile(ConfigFilePath, 2, True, 0)
     
@@ -44,7 +43,7 @@ Public Sub WriteConfigFile(data() As String)
 End Sub
 
 ' Shift-JISÇ≈ì«Ç›çûÇ›
-Public Function ReadConfigFile() As Variant
+Public Function Load() As Variant
     Dim fso: Set fso = CreateObject("Scripting.FileSystemObject")
     On Error Resume Next
     Dim stream: Set stream = fso.OpenTextFile(ConfigFilePath, 1, True, 0)

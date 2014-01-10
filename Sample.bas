@@ -14,23 +14,17 @@ Sub SampleCode()
     Call Clipborad.SetText(testString)
     
     ' VBA_File のサンプル ____________________
-    Dim fileName As String: fileName = "hoge.txt"
-    Call File.WriteAllText(fileName, testString)
-    testString = File.ReadAllText(fileName)
-    Call File.Delete(fileName)
+    Dim FileName As String: FileName = "hoge.txt"
+    Call File.WriteAllText(FileName, testString)
+    testString = File.ReadAllText(FileName)
+    Call File.Delete(FileName)
     
-    ' VBA_ConfigFile のサンプル ____________________
-    Dim temp() As String: ReDim temp(2)
-    temp(0) = "parameter1": temp(1) = "parameter2"
-    
-    Dim config As New VBA_ConfigFile
-    config.ConfigFileName = "test.config" 'ファイル名の指定必須
-    Call config.WriteConfigFile(temp)
-    temp = config.ReadConfigFile()
-    
-    ' VBA_File, VBA_Directory, VBA_Path のサンプル ____________________
-    Call File.Delete(config.ConfigFilePath)
-    Call Directory.Delete(IOPath.GetDirectoryName(config.ConfigFilePath))
+    ' VBA_Regex のサンプル ____________________________
+    Dim re As New VBA_Regex
+    Call re.Init("fuga")
+    If re.IsMatch("hoge moge fuga") Then
+        Dim m: Set m = re.Match("hoge moge fuga")
+    End If
     
     ' VBA_StringBuiler のサンプル ____________________________
     Dim sb As New VBA_StringBuilder
@@ -38,6 +32,19 @@ Sub SampleCode()
         Call sb.Append(testString)
     Next
     testString = sb.ToString()
+        
+    ' VBA_ConfigFile のサンプル ____________________
+    Dim temp() As String: ReDim temp(2)
+    temp(0) = "parameter1": temp(1) = "parameter2"
+    
+    Dim config As New VBA_ConfigFile
+    Call config.Init("test.config") 'ファイル名の指定必須
+    Call config.Save(temp)
+    temp = config.Load()
+    
+    ' VBA_File, VBA_Directory, VBA_Path のサンプル ____________________
+    Call File.Delete(config.ConfigFilePath)
+    Call Directory.Delete(IOPath.GetDirectoryName(config.ConfigFilePath))
         
     ' VBA_VAMIE のサンプル ____________________________
     Dim ie As New VBA_VAMIE
