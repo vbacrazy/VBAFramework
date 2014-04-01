@@ -46,4 +46,4 @@ This source code is under [MIT License](https://github.com/dck-jp/VBAFramework/b
 てきとうによろしくどうぞー。
 
 ## Author
-D*isuke YAMAKAWA ([@d_ymkw](https://twitter.com/d_ymkw))
+D*isuke YAMAKAWA 
